@@ -1,0 +1,10 @@
+#root {
+  width: 90vw;
+  padding: 2rem;
+  text-align: start;
+  margin: 0 auto;
+}
+
+#tasks{
+  height: 35rem;
+}
