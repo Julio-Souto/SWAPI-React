@@ -7,15 +7,20 @@ function ListUsers({ user }) {
   useEffect(() => {
     const handle = async() => {
       const response = await fetch("https://swapi.dev/api/people/?format=json")
-      setData(await response.json())
-      console.log(data)
+      let datos = await response.json()
+      const { results } = datos
+      console.log(results)
+      let datos2 = results.map(({name,mass,height}) => {
+        return {name,mass,height}
+      })
+      setData(datos2)
     }
     handle()
   },[])
 
   useEffect(() => {
     if(user.name!="" && data.length != 0){
-      if(!checkExists(user.name,data.results))
+      if(!checkExists(user.name,data))
         push()
     }
     console.log(user)
@@ -23,20 +28,20 @@ function ListUsers({ user }) {
   
   const push = () => {
     let copy = structuredClone(data)
-    copy.results.unshift(user)
+    copy.unshift(user)
     setData(copy)
   }
   
   const deleteUser = (index) => {
     let copy = structuredClone(data)
-    copy.results.splice(index,1)
+    copy.splice(index,1)
     setData(copy)
   }
   return (
     <>
       <div id="tasks" className="w-full my-5 overflow-y-auto rounded-lg bg-slate-800">
         {data.length != 0 ?
-        data.results === undefined ? <p></p> : data.results.map((item, index) =>    
+        data === undefined ? <p></p> : data.map((item, index) =>    
         <div key={index} id="task" className="flex items-center justify-between px-2 py-3 border-b border-l-4 border-slate-200 border-l-transparent">
             <div className="inline-flex items-center space-x-2">
               <div>{"Nombre: "+item.name+", Peso: "+item.mass+", Altura: "+item.height}</div>
