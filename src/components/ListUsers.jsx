@@ -34,7 +34,7 @@ function ListUsers({ user }) {
   }
   return (
     <>
-      <div id="tasks" className="w-full my-5 overflow-y-auto">
+      <div id="tasks" className="w-full my-5 overflow-y-auto rounded-lg bg-slate-800">
         {data.length != 0 ?
         data.results === undefined ? <p></p> : data.results.map((item, index) =>    
         <div key={index} id="task" className="flex items-center justify-between px-2 py-3 border-b border-l-4 border-slate-200 border-l-transparent">

@@ -12,9 +12,9 @@ function App() {
   
   return (
     <>
+      <h1 className='mb-4 font-bold leading-9 text-center text-white text-4x2'>SWAPI</h1>
       <div className='flex justify-center place-items-center'>
         <div className='w-full mr-10'>
-          <h1 className='mb-4 font-bold leading-9 text-white text-4x2'>Simple Form </h1>
           <UserForm setData={push} />
         </div>
         <ListUsers user={user}/>
