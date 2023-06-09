@@ -18,7 +18,7 @@ function UserForm({ setData }) {
 
   return (
     <>
-      <form className="mt-6 space-y-4 sm:w-full sm:max-w-2xl" action="#" onSubmit={submit}>
+      <form className="space-y-4 sm:w-full sm:max-w-2xl" action="#" onSubmit={submit}>
         <div>
           {error ? <ErrorMessage error={"Name cannot be empty"} /> : <p></p>}
           <label className={label} htmlFor="nombre">Nombre</label>
@@ -26,11 +26,11 @@ function UserForm({ setData }) {
         </div>
         <div>
           <label className={label} htmlFor="altura">Altura</label>
-          <input className={input} type="number" name="altura" id="altura"/>
+          <input className={input} type="number" name="altura" id="altura" value={0} required/>
         </div>
         <div>
           <label className={label} htmlFor="peso">Peso</label>
-          <input className={input} type="number" name="peso" id="peso"/>
+          <input className={input} type="number" name="peso" id="peso" value={0} required/>
         </div>
         <button className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
           Enviar</button>

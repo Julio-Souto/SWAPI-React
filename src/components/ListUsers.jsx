@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react'
+import LoadingSpinner from './Loading'
 
 function ListUsers({ user }) {
   const [data, setData] = useState([])
@@ -39,9 +40,9 @@ function ListUsers({ user }) {
   }
   return (
     <>
-      <div id="tasks" className="w-full my-5 overflow-y-auto rounded-lg bg-slate-800">
-        {data.length != 0 ?
-        data === undefined ? <p></p> : data.map((item, index) =>    
+    {data.length != 0 ?
+      <div id="tasks" className="flex-1 my-5 overflow-y-auto rounded-lg bg-slate-800">
+        {data === undefined ? <p></p> : data.map((item, index) =>    
         <div key={index} id="task" className="flex items-center justify-between px-2 py-3 border-b border-l-4 border-slate-200 border-l-transparent">
             <div className="inline-flex items-center space-x-2">
               <div>{"Nombre: "+item.name+", Peso: "+item.mass+", Altura: "+item.height}</div>
@@ -52,8 +53,9 @@ function ListUsers({ user }) {
               </svg>
             </button>
         </div>
-        ) : <p></p>}
+        )}
       </div>
+      : <LoadingSpinner />}
     </>
   )
 }
